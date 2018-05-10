@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from category.models import Category
+from taggit.managers import TaggableManager
 
 
 class Product(models.Model):
@@ -9,12 +10,17 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    stock = models.PositiveIntegerField()
+    stock = models.PositiveIntegerField(default=100)
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    to_category = models.ForeignKey(Category, related_name='c_products', on_delete=models.CASCADE)
-    display = models.CharField(max_length=100, null=True)
+    display = models.CharField(max_length=100, null=True, blank=True)
+    brand = models.CharField(max_length=100, null=True, blank=True)
+    sales = models.PositiveIntegerField(default=100)
+
+    to_category = models.ManyToManyField(Category, related_name='c_products', blank=True, null=True)
+
+    tags = TaggableManager()
 
     class Meta:
         ordering = ('name',)

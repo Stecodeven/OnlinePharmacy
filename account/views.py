@@ -11,7 +11,10 @@ def dashboard(request):
     categories = Category.objects.filter(floor=100)
     floors = Category.objects.filter(floor__lte=10)
     # categories = []
-
+    for f in floors:
+        print(f)
+        for p in f.c_products.all():
+            print(p.image.url)
     return render(request, 'account/dashboard.html', {'categories': categories,
                                                       'floors': floors})
 
