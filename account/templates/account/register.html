@@ -1,25 +1,25 @@
-{% extends "base.html" %}
-{% block head %}
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>注册</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+        {% load static %}
+        <meta charset="UTF-8">
+        <title>注册</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="Cache-Control" content="no-siteapp">
 
-    <link href="{% static 'css/amazeui.css' %}" rel="stylesheet">
-    <link href="{% static 'css/dlstyle.css' %}" rel="stylesheet">
+        <link href="{% static 'css/amazeui.css' %}" rel="stylesheet">
+        <link href="{% static 'css/dlstyle.css' %}" rel="stylesheet">
 
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/amazeui.min.js' %}"></script>
-{% endblock %}
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+    </head>
 
-{% block body %}
+    <body>
 
 		<div class="login-boxtitle">
-			<a href="home/demo.html"><img alt="" src="{% static 'img/logobig.png' %}"/></a>
+			<a href="{% url 'dashboard' %}"><img alt="" src="{% static 'img/logobig.png' %}"/></a>
 		</div>
 
 		<div class="res-banner">
@@ -65,4 +65,5 @@
                 </div>
 			</div>
         </div>
-{% endblock %}
+    </body>
+</html>

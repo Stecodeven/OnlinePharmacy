@@ -19,12 +19,13 @@
 {% block body %}
     <div class="banner">
         <!--轮播 -->
-        <div class="am-slider am-slider-default scoll"  id="demo-slider-0">
+        <div class="am-slider am-slider-default scoll" data-am-flexslider id="demo-slider-0">
             <ul class="am-slides">
-                <li class="banner1"><a href="introduction.html"><img src="{% static 'img/ad1.jpg' %}" /></a></li>
+                <li class="banner1"><a><img src="{% static 'img/ad1.jpg' %}" /></a></li>
                 <li class="banner2"><a><img src="{% static 'img/ad2.jpg' %}" /></a></li>
                 <li class="banner3"><a><img src="{% static 'img/ad3.jpg' %}" /></a></li>
                 <li class="banner4"><a><img src="{% static 'img/ad4.jpg' %}" /></a></li>
+
             </ul>
         </div>
 
@@ -67,7 +68,7 @@
                                                         <dl class="dl-sort">
                                                             <dt><span>{{ k.description }}</span></dt>
                                                             {% for t in k.tags.all %}
-                                                            <dd><a href="{% url 'product:post_list_by_tag' t.slug %}"><span>{{t.name}}</span></a></dd>
+                                                            <dd><a href="{% url 'product:product_list_by_tag' t.slug %}"><span>{{t.name}}</span></a></dd>
                                                             {% endfor %}
                                                         </dl>
                                                         {% endfor %}
@@ -139,7 +140,7 @@
                         <div class="word">
                             {% for k in f.c_kinds.all %}
                             {% for t in k.tags.all %}
-                                <a class="outer" href="#"><span class="inner"><b class="text">{{t}}</b></span></a>
+                                <a class="outer" href="{% url 'product:product_list_by_tag' t.slug %}"><span class="inner"><b class="text">{{t}}</b></span></a>
                             {% endfor %}
                             {% endfor %}
                         </div>
@@ -168,7 +169,7 @@
                             </div>
                             <i class="am-icon-shopping-basket am-icon-md  seprate"></i>
                         </div>
-                        <a href="#"><img src="{{p.image.url}}" /></a>
+                        <a href="{{ p.get_absolute_url }}"><img src="{{p.image.url}}" /></a>
                     </div>
                     {% endfor %}
                 </div>

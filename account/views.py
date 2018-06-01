@@ -1,12 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
 from .forms import UserRegistrationForm
-from django.contrib.auth.decorators import login_required
 from category.models import Category
 
 
-@login_required
 def dashboard(request):
     categories = Category.objects.filter(floor=100)
     floors = Category.objects.filter(floor__lte=10)
