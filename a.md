@@ -1,4 +1,4 @@
 test0
 
 
-master
+Creating a new branch is quick & simple.
