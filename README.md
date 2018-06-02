@@ -22,7 +22,7 @@ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b
 #针对项目成员的git 使用：
 
 #1基本环境部署
-	
+	比如你现在正在main目录下
 	克隆本项目  
 		git clone git@gitee.com:Callmejp/OnlinePharmacy.git
 
@@ -36,7 +36,10 @@ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b
 	master就是用来放我们软件的稳定版本的，我们一般修改，操作，都是在dev上进行，
 	只有dev上进行的差不多了，我们才把dev内容同步到master上，或者说叫合并。
 
-	可以把dev当做master背后的艰辛努力，为了玩耍，我们复制了master内容，dev上各种修改，修改好了，再同步到master，master就是我们只愿意给用户看的成功版本。master就是我们的成品，dev就叫成功的背后的刻苦吧，好尬。。。
+	可以把dev当做master背后的艰辛努力，为了玩耍，
+	我们复制了master内容，dev上各种修改，修改好了，再同步到master，
+	master就是我们只愿意给用户看的成功版本。
+	master就是我们的成品，dev就叫成功的背后的刻苦吧，好尬。。。
 
 	
 	克隆下项目以后目录结构应该是main/OnlinePharmacy
@@ -71,25 +74,16 @@ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b
 	(没事都可以敲敲git branch查看自己在什么分支 有哪些分支)
 	git branch是比较重要的命令！
 
-#3
-	现在本地你有master和dev分支
 
-		git checkout 分支名字
-
-	可以切换你所在分支
-
-	然后
-		git pull
-
-	可以将远程dev最新的东西，同步到你现在的dev上
-
-	然后你可以进行修改了！
-
-划重点！！
 #4多人协作
-
-	记住你现在在dev分支。git branch可以查看
-	如果不在请用git checkout 分支名  切换。
+	划重点！！!
+	记住你现在在dev分支。git branch可以查看你在哪个分支
+	如果不在dev请用git checkout 分支名  切换到dev。
+	
+	然后
+		git pull 
+	表示把远程仓库的dev最新内容抓取到本地的dev
+	然后你再开始工作。
 
 	比如你本地写好了一个html或者py文件
 	先到文件所在目录 类似于svn实验的操作
@@ -114,29 +108,34 @@ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b
 	以上是比较简单的场景。稍微复杂一点情况是必须掌握的。
 
 	事实上，可能会出现这样的情况：
-	JP在他的本地dev分支上修改了 a.py文件 并且提交然后push
-	我在本地dev分支也修改了 a.py文件，但是晚于JP push
+	JP在他的本地dev分支上修改了 a.py文件
+	并且提交commit然后push到了远程
+	
+	之后我也在本地的dev分支修改了 a.py文件
+	但是晚于JP的push，当我正准备push的时候，commit好了以后
 
-	这个时候就会有冲突，就是我commit后然后push的时候会报错
-	要操作很简单。
+	我在本地输入 git push origin dev后报错了
+	这是因为我和JP的push时间差导致当我push的时候远程库和我的库不一致
+	这时候操作很简单。
 		git pull
 	把远程dev最新的同步下来，因为JP已经把他的最新放在远程dev上了
-	然后git的机制就是在起冲突的那个文件会把我改的部分和最新的JP
+	然后git的机制就是在起冲突的那个文件里会把我改的部分和最新的JP
 	改过或者添加的部分都给注明出来。
 
 	文件当中它自动的用显眼的标签注明出来。
 
 	然后我打开a.py,手动的合并我和JP各自修改过的那部分内容。
-	然后我再次
+	然后我再次在本地
 		git add a.py
 		git commit -m "test"
 		git push origin dev
 	这次就会push成功，就是我和JP都改过且手动合并的版本。
+	线上的仓库就是我和JP都改过的版本了（事实上是我最后合并了两个文件并push的
 
 	简言之，同一文件 后push的那个人工作会稍微多一点。
 
 
-	以后要在dev分支下工作的时候，都可以先
+	以后要在dev分支下工作的时候，最好先
 		git pull
 	保持和项目最新dev分支的一致
 
