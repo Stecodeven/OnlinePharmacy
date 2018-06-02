@@ -39,8 +39,8 @@
                     </div>
                 </div>
             </div>
-            <div class="clear"></div>
 
+            <form action="{% url 'order_index' %}" method="post">
             <tr class="item-list">
                 <div class="bundle  bundle-last ">
 
@@ -50,8 +50,7 @@
                         <ul class="item-content clearfix">
                             <li class="td td-chk">
                                 <div class="cart-checkbox ">
-                                    <input class="check" id="{{p.id}}" type="checkbox" checked="checked">
-                                    <label for="{{p.id}}"></label>
+                                    <input class="check" id="{{p.id}}"  value="{{p.id}}" name="if_buy" type="checkbox" checked="checked">
                                 </div>
                             </li>
                             <li class="td td-item">
@@ -80,7 +79,7 @@
                                             <em class="price-original">{{p.price}}</em>
                                         </div>
                                         <div class="price-line">
-                                            <em class="J_Price price-now" tabindex="0">{{p.price}}</em>
+                                            <em class="J_Price price-now" tabindex="0" id="p_{{p.id}}">{{p.price}}</em>
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +89,7 @@
                                     <div class="item-amount ">
                                         <div class="sl">
                                             <a href="{% url 'sub_product' p.id %}"><input class="min am-btn" name="" type="button" value="-" /></a>
-                                            <input class="text_box" name="" type="text" value="{{p.count}}" style="width:30px;" />
+                                            <input class="text_box" name="product" id="c_{{p.id}}" type="text" value="{{p.count}}" style="width:30px;" />
                                             <a href="{% url 'plus_product' p.id %}"><input class="add am-btn" name="" type="button" value="+" /></a>
                                         </div>
                                     </div>
@@ -111,7 +110,6 @@
                     </div>
                 </div>
             </tr>
-            <div class="clear"></div>
 
             <tr class="item-list">
 				<div class="float-bar-wrapper">
@@ -139,13 +137,17 @@
 							<strong class="price">¥<em id="J_Total">{{total_price}}</em></strong>
 						</div>
 						<div class="btn-area">
-							<a href="pay.html" id="J_Go" class="submit-btn submit-btn-disabled" aria-label="请注意如果没有选择宝贝，将无法结算">
-								<span>结&nbsp;算</span></a>
+
+                            <a id="J_Go" class="submit-btn submit-btn-disabled">
+                                <input type="submit" value="结&nbsp;算">
+                            </a>
 						</div>
 					</div>
 
                 </div>
             </tr>
+                {% csrf_token %}
+            </form>
         </div>
     </div>
     <script type="text/javascript" src="{% static 'js/cart_detail.js' %}"></script>
