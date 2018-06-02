@@ -22,6 +22,8 @@ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b
 #针对项目成员的git 使用：
 
 #1基本环境部署
+	
+
 	比如你现在正在main目录下
 	克隆本项目  
 		git clone git@gitee.com:Callmejp/OnlinePharmacy.git
@@ -30,6 +32,8 @@ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b
 	项目成员可以根据情况作出任意修改
 
 #2分支的意义
+	
+
 	远程的仓库首先有两个分支，一个叫master核心分支，一个叫dev，项目一开始创建的时候
 	只有一个master，dev是我们在网页手动创建的。不变了，就只需要这两个分支。
 
@@ -75,7 +79,9 @@ https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b
 	git branch是比较重要的命令！
 
 
-#4多人协作
+#3多人协作
+	
+
 	划重点！！!
 	记住你现在在dev分支。git branch可以查看你在哪个分支
 	如果不在dev请用git checkout 分支名  切换到dev。
