@@ -100,24 +100,6 @@ def delete_product(request, pid):
     return redirect(cart_detail)
 
 
-@login_required
-def sub_product(request, pid):
-    user = request.user
-
-    cart_key = 'cart_%d' % user.id
-    cart_count = r.hget(cart_key, pid)
-    if int(cart_count) == 1:
-        return redirect(delete_product, pid)
-
-    r.hset(cart_key, pid, int(cart_count)-1)
-    sku = get_object_or_404(Product, id=pid, available=True)
-
-    if 'total_price' in request.session:
-        request.session["total_price"] = request.session["total_price"] - float(sku.price)
-    else:
-        update_session(request, cart_key)
-    return redirect(cart_detail)
-
 
 @login_required
 def plus_product(request, pid):
@@ -135,8 +117,23 @@ def plus_product(request, pid):
         update_session(request, cart_key)
     return redirect(cart_detail)
 
+@login_required
+def sub_product(request, pid):
+    user = request.user
 
+    cart_key = 'cart_%d' % user.id
+    cart_count = r.hget(cart_key, pid)
+    if int(cart_count) == 1:
+        return redirect(delete_product, pid)
 
+    r.hset(cart_key, pid, int(cart_count)-1)
+    sku = get_object_or_404(Product, id=pid, available=True)
+
+    if 'total_price' in request.session:
+        request.session["total_price"] = request.session["total_price"] - float(sku.price)
+    else:
+        update_session(request, cart_key)
+    return redirect(cart_detail)
 
 
 
