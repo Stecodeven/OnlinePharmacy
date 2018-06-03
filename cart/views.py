@@ -99,8 +99,6 @@ def delete_product(request, pid):
         update_session(request, cart_key)
     return redirect(cart_detail)
 
-
-
 @login_required
 def plus_product(request, pid):
     user = request.user
