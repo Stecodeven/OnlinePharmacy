@@ -39,12 +39,6 @@ def post_list(request, tag_slug=None):
     return render(request, 'product/list.html', {'page': page, 'products': products, 'mode': choice})
 
 
-def product_detail(request, id, slug):
-    product = get_object_or_404(Product, id=id, slug=slug, available=True)
-
-    return render(request, 'product/detail.html', {'p': product, 'pid': product.id})
-
-
 def search_product(request):
     if request.method == 'POST':
         content = request.POST['index_none_header_sysc']
@@ -55,5 +49,14 @@ def search_product(request):
         return render(request, 'product/list.html', {'products': products.distinct()})
 
     return render(request, 'product/list.html')
+
+
+def product_detail(request, id, slug):
+    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+
+    return render(request, 'product/detail.html', {'p': product, 'pid': product.id})
+
+
+
 
 
