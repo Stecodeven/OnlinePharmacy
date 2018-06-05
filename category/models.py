@@ -14,6 +14,7 @@ class Category(models.Model):
         return self.title
 
 
+
 class Kinds(models.Model):
     description = models.CharField(max_length=200)
     to_category = models.ForeignKey(Category, related_name='c_kinds', on_delete=models.CASCADE)
@@ -21,7 +22,3 @@ class Kinds(models.Model):
 
     def __str__(self):
         return self.description
-
-
-
-
