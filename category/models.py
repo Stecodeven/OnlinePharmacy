@@ -2,16 +2,6 @@ from django.db import models
 from taggit.managers import TaggableManager
 
 
-
-class Kinds(models.Model):
-    description = models.CharField(max_length=200)
-    to_category = models.ForeignKey(Category, related_name='c_kinds', on_delete=models.CASCADE)
-    tags = TaggableManager()
-
-    def __str__(self):
-        return self.description
-
-
 class Category(models.Model):
     title = models.CharField(max_length=15)
 
@@ -25,3 +15,10 @@ class Category(models.Model):
 
 
 
+class Kinds(models.Model):
+    description = models.CharField(max_length=200)
+    to_category = models.ForeignKey(Category, related_name='c_kinds', on_delete=models.CASCADE)
+    tags = TaggableManager()
+
+    def __str__(self):
+        return self.description
