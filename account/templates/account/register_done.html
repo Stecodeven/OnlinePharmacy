@@ -1,9 +1,29 @@
 {% extends "base.html" %}
 {% block head %}
 <title>欢迎</title>
+<style>
+    .center{
+    width: 35%;
+    height: 40%;
+    position:absolute;
+    left:0;
+    top: -50px;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.margin{
+margin-top:20px;
+margin-bottom:20px;
+font-size:20px;
+}
+</style>
 {% endblock %}
 
 {% block body %}
+<div class="center">
   <h1>欢迎 {{ new_user.username }}!</h1>
   <p>成功创建新账号. 现在你可以<a href="{% url 'login' %}">登陆</a>。</p>
+</div>
 {% endblock %}
